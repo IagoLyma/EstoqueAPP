@@ -36,11 +36,11 @@
             btn_editar_veiculo = new ToolStripButton();
             btn_consultar_veiculo = new ToolStripButton();
             btn_excluir_veiculo = new ToolStripButton();
-            textBox5 = new TextBox();
-            textBox4 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            txt_cargaveiculo = new TextBox();
+            txt_consumoveiculo = new TextBox();
+            txt_placaveiculo = new TextBox();
+            txt_modeloveiculo = new TextBox();
+            txt_veiculoid = new TextBox();
             label5 = new Label();
             lbl_consumo = new Label();
             lbl_placa = new Label();
@@ -97,7 +97,7 @@
             dateTimePicker3 = new DateTimePicker();
             comboBox3 = new ComboBox();
             comboBox2 = new ComboBox();
-            comboBox1 = new ComboBox();
+            cb_veiculoviagem = new ComboBox();
             label15 = new Label();
             label14 = new Label();
             dateTimePicker2 = new DateTimePicker();
@@ -135,11 +135,11 @@
             // tab_veiculo
             // 
             tab_veiculo.Controls.Add(tool_veiculo);
-            tab_veiculo.Controls.Add(textBox5);
-            tab_veiculo.Controls.Add(textBox4);
-            tab_veiculo.Controls.Add(textBox3);
-            tab_veiculo.Controls.Add(textBox2);
-            tab_veiculo.Controls.Add(textBox1);
+            tab_veiculo.Controls.Add(txt_cargaveiculo);
+            tab_veiculo.Controls.Add(txt_consumoveiculo);
+            tab_veiculo.Controls.Add(txt_placaveiculo);
+            tab_veiculo.Controls.Add(txt_modeloveiculo);
+            tab_veiculo.Controls.Add(txt_veiculoid);
             tab_veiculo.Controls.Add(label5);
             tab_veiculo.Controls.Add(lbl_consumo);
             tab_veiculo.Controls.Add(lbl_placa);
@@ -175,6 +175,7 @@
             btn_salvar_veiculo.Name = "btn_salvar_veiculo";
             btn_salvar_veiculo.Size = new Size(80, 80);
             btn_salvar_veiculo.Text = "toolStripButton1";
+            btn_salvar_veiculo.Click += btn_salvar_veiculo_Click;
             // 
             // btn_editar_veiculo
             // 
@@ -206,45 +207,46 @@
             btn_excluir_veiculo.Size = new Size(80, 80);
             btn_excluir_veiculo.Text = "toolStripButton4";
             // 
-            // textBox5
+            // txt_cargaveiculo
             // 
-            textBox5.Font = new Font("Segoe UI", 12F);
-            textBox5.Location = new Point(301, 316);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(148, 29);
-            textBox5.TabIndex = 9;
+            txt_cargaveiculo.Font = new Font("Segoe UI", 12F);
+            txt_cargaveiculo.Location = new Point(301, 316);
+            txt_cargaveiculo.Name = "txt_cargaveiculo";
+            txt_cargaveiculo.Size = new Size(148, 29);
+            txt_cargaveiculo.TabIndex = 9;
             // 
-            // textBox4
+            // txt_consumoveiculo
             // 
-            textBox4.Font = new Font("Segoe UI", 12F);
-            textBox4.Location = new Point(301, 275);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(110, 29);
-            textBox4.TabIndex = 8;
+            txt_consumoveiculo.Font = new Font("Segoe UI", 12F);
+            txt_consumoveiculo.Location = new Point(301, 275);
+            txt_consumoveiculo.Name = "txt_consumoveiculo";
+            txt_consumoveiculo.Size = new Size(110, 29);
+            txt_consumoveiculo.TabIndex = 8;
             // 
-            // textBox3
+            // txt_placaveiculo
             // 
-            textBox3.Font = new Font("Segoe UI", 12F);
-            textBox3.Location = new Point(301, 237);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(173, 29);
-            textBox3.TabIndex = 7;
+            txt_placaveiculo.Font = new Font("Segoe UI", 12F);
+            txt_placaveiculo.Location = new Point(301, 237);
+            txt_placaveiculo.Name = "txt_placaveiculo";
+            txt_placaveiculo.Size = new Size(173, 29);
+            txt_placaveiculo.TabIndex = 7;
             // 
-            // textBox2
+            // txt_modeloveiculo
             // 
-            textBox2.Font = new Font("Segoe UI", 12F);
-            textBox2.Location = new Point(301, 193);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(211, 29);
-            textBox2.TabIndex = 6;
+            txt_modeloveiculo.Font = new Font("Segoe UI", 12F);
+            txt_modeloveiculo.Location = new Point(301, 193);
+            txt_modeloveiculo.Name = "txt_modeloveiculo";
+            txt_modeloveiculo.Size = new Size(211, 29);
+            txt_modeloveiculo.TabIndex = 6;
             // 
-            // textBox1
+            // txt_veiculoid
             // 
-            textBox1.Font = new Font("Segoe UI", 12F);
-            textBox1.Location = new Point(302, 154);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(140, 29);
-            textBox1.TabIndex = 5;
+            txt_veiculoid.Font = new Font("Segoe UI", 12F);
+            txt_veiculoid.Location = new Point(302, 154);
+            txt_veiculoid.Name = "txt_veiculoid";
+            txt_veiculoid.ReadOnly = true;
+            txt_veiculoid.Size = new Size(140, 29);
+            txt_veiculoid.TabIndex = 5;
             // 
             // label5
             // 
@@ -735,7 +737,7 @@
             tab_viagem.Controls.Add(dateTimePicker3);
             tab_viagem.Controls.Add(comboBox3);
             tab_viagem.Controls.Add(comboBox2);
-            tab_viagem.Controls.Add(comboBox1);
+            tab_viagem.Controls.Add(cb_veiculoviagem);
             tab_viagem.Controls.Add(label15);
             tab_viagem.Controls.Add(label14);
             tab_viagem.Controls.Add(dateTimePicker2);
@@ -831,14 +833,15 @@
             comboBox2.Size = new Size(164, 29);
             comboBox2.TabIndex = 48;
             // 
-            // comboBox1
+            // cb_veiculoviagem
             // 
-            comboBox1.Font = new Font("Segoe UI", 12F);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(327, 274);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(164, 29);
-            comboBox1.TabIndex = 47;
+            cb_veiculoviagem.Font = new Font("Segoe UI", 12F);
+            cb_veiculoviagem.FormattingEnabled = true;
+            cb_veiculoviagem.Location = new Point(327, 274);
+            cb_veiculoviagem.Name = "cb_veiculoviagem";
+            cb_veiculoviagem.Size = new Size(164, 29);
+            cb_veiculoviagem.TabIndex = 47;
+            cb_veiculoviagem.DropDown += cb_veiculoviagem_DropDown;
             // 
             // label15
             // 
@@ -924,6 +927,7 @@
             Controls.Add(tabControl1);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             tabControl1.ResumeLayout(false);
             tab_veiculo.ResumeLayout(false);
             tab_veiculo.PerformLayout();
@@ -960,11 +964,11 @@
         private Label lbl_consumo;
         private Label lbl_placa;
         private Label lbl_modeloveiculo;
-        private TextBox textBox1;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox5;
-        private TextBox textBox4;
+        private TextBox txt_veiculoid;
+        private TextBox txt_placaveiculo;
+        private TextBox txt_modeloveiculo;
+        private TextBox txt_cargaveiculo;
+        private TextBox txt_consumoveiculo;
         private TextBox txt_fonemoto;
         private TextBox txt_cnhmoto;
         private TextBox txt_nomemotorista;
@@ -1005,7 +1009,7 @@
         private DateTimePicker dateTimePicker3;
         private ComboBox comboBox3;
         private ComboBox comboBox2;
-        private ComboBox comboBox1;
+        private ComboBox cb_veiculoviagem;
         private ToolStrip tool_motorista;
         private ToolStripButton btn_salvar_motorista;
         private ToolStripButton btn_editar_motorista;
