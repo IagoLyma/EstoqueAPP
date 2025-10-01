@@ -66,9 +66,9 @@
             btn_editar_rota = new ToolStripButton();
             btn_consultar_rota = new ToolStripButton();
             btn_excluir_rota = new ToolStripButton();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
-            textBox8 = new TextBox();
+            txt_distanciarota = new TextBox();
+            txt_destinorota = new TextBox();
+            txt_origemrota = new TextBox();
             textBox9 = new TextBox();
             label1 = new Label();
             label2 = new Label();
@@ -95,8 +95,8 @@
             btn_consultar_viagem = new ToolStripButton();
             btn_excluir_viagem = new ToolStripButton();
             dateTimePicker3 = new DateTimePicker();
-            comboBox3 = new ComboBox();
-            comboBox2 = new ComboBox();
+            cb_motoristaviagem = new ComboBox();
+            cb_rotaviagem = new ComboBox();
             cb_veiculoviagem = new ComboBox();
             label15 = new Label();
             label14 = new Label();
@@ -129,7 +129,7 @@
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(800, 450);
+            tabControl1.Size = new Size(923, 566);
             tabControl1.TabIndex = 1;
             // 
             // tab_veiculo
@@ -148,7 +148,7 @@
             tab_veiculo.Location = new Point(4, 24);
             tab_veiculo.Name = "tab_veiculo";
             tab_veiculo.Padding = new Padding(3);
-            tab_veiculo.Size = new Size(792, 422);
+            tab_veiculo.Size = new Size(915, 538);
             tab_veiculo.TabIndex = 0;
             tab_veiculo.Text = "Veiculo";
             tab_veiculo.UseVisualStyleBackColor = true;
@@ -160,7 +160,7 @@
             tool_veiculo.Items.AddRange(new ToolStripItem[] { btn_salvar_veiculo, btn_editar_veiculo, btn_consultar_veiculo, btn_excluir_veiculo });
             tool_veiculo.Location = new Point(3, 3);
             tool_veiculo.Name = "tool_veiculo";
-            tool_veiculo.Size = new Size(786, 100);
+            tool_veiculo.Size = new Size(909, 100);
             tool_veiculo.TabIndex = 10;
             tool_veiculo.Text = "toolStrip1";
             // 
@@ -195,7 +195,8 @@
             btn_consultar_veiculo.ImageTransparentColor = Color.Magenta;
             btn_consultar_veiculo.Name = "btn_consultar_veiculo";
             btn_consultar_veiculo.Size = new Size(80, 80);
-            btn_consultar_veiculo.Text = "toolStripButton3";
+            btn_consultar_veiculo.Text = "Consultar veiculos";
+            btn_consultar_veiculo.Click += btn_consultar_veiculo_Click;
             // 
             // btn_excluir_veiculo
             // 
@@ -312,7 +313,7 @@
             tab_motorista.Location = new Point(4, 24);
             tab_motorista.Name = "tab_motorista";
             tab_motorista.Padding = new Padding(3);
-            tab_motorista.Size = new Size(792, 422);
+            tab_motorista.Size = new Size(915, 538);
             tab_motorista.TabIndex = 1;
             tab_motorista.Text = "Motorista";
             tab_motorista.UseVisualStyleBackColor = true;
@@ -324,7 +325,7 @@
             tool_motorista.Items.AddRange(new ToolStripItem[] { btn_salvar_motorista, btn_editar_motorista, btn_consultar_motorista, btn_excluir_motorista });
             tool_motorista.Location = new Point(3, 3);
             tool_motorista.Name = "tool_motorista";
-            tool_motorista.Size = new Size(786, 100);
+            tool_motorista.Size = new Size(909, 100);
             tool_motorista.TabIndex = 19;
             tool_motorista.Text = "toolStrip1";
             // 
@@ -338,7 +339,8 @@
             btn_salvar_motorista.ImageTransparentColor = Color.Magenta;
             btn_salvar_motorista.Name = "btn_salvar_motorista";
             btn_salvar_motorista.Size = new Size(80, 80);
-            btn_salvar_motorista.Text = "toolStripButton1";
+            btn_salvar_motorista.Text = "Inserir / Salvar";
+            btn_salvar_motorista.Click += btn_salvar_motorista_Click;
             // 
             // btn_editar_motorista
             // 
@@ -399,6 +401,7 @@
             txt_motoid.Font = new Font("Segoe UI", 12F);
             txt_motoid.Location = new Point(303, 146);
             txt_motoid.Name = "txt_motoid";
+            txt_motoid.ReadOnly = true;
             txt_motoid.Size = new Size(197, 29);
             txt_motoid.TabIndex = 15;
             // 
@@ -445,9 +448,9 @@
             // tab_rota
             // 
             tab_rota.Controls.Add(tool_rota);
-            tab_rota.Controls.Add(textBox6);
-            tab_rota.Controls.Add(textBox7);
-            tab_rota.Controls.Add(textBox8);
+            tab_rota.Controls.Add(txt_distanciarota);
+            tab_rota.Controls.Add(txt_destinorota);
+            tab_rota.Controls.Add(txt_origemrota);
             tab_rota.Controls.Add(textBox9);
             tab_rota.Controls.Add(label1);
             tab_rota.Controls.Add(label2);
@@ -456,7 +459,7 @@
             tab_rota.Location = new Point(4, 24);
             tab_rota.Name = "tab_rota";
             tab_rota.Padding = new Padding(3);
-            tab_rota.Size = new Size(792, 422);
+            tab_rota.Size = new Size(915, 538);
             tab_rota.TabIndex = 2;
             tab_rota.Text = "Rota";
             tab_rota.UseVisualStyleBackColor = true;
@@ -468,7 +471,7 @@
             tool_rota.Items.AddRange(new ToolStripItem[] { btn_salvar_rota, btn_editar_rota, btn_consultar_rota, btn_excluir_rota });
             tool_rota.Location = new Point(3, 3);
             tool_rota.Name = "tool_rota";
-            tool_rota.Size = new Size(786, 100);
+            tool_rota.Size = new Size(909, 100);
             tool_rota.TabIndex = 27;
             tool_rota.Text = "toolStrip1";
             // 
@@ -482,7 +485,8 @@
             btn_salvar_rota.ImageTransparentColor = Color.Magenta;
             btn_salvar_rota.Name = "btn_salvar_rota";
             btn_salvar_rota.Size = new Size(80, 80);
-            btn_salvar_rota.Text = "toolStripButton1";
+            btn_salvar_rota.Text = "btn_salvar_rota";
+            btn_salvar_rota.Click += btn_salvar_rota_Click;
             // 
             // btn_editar_rota
             // 
@@ -514,35 +518,36 @@
             btn_excluir_rota.Size = new Size(80, 80);
             btn_excluir_rota.Text = "toolStripButton4";
             // 
-            // textBox6
+            // txt_distanciarota
             // 
-            textBox6.Font = new Font("Segoe UI", 12F);
-            textBox6.Location = new Point(273, 285);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(165, 29);
-            textBox6.TabIndex = 26;
+            txt_distanciarota.Font = new Font("Segoe UI", 12F);
+            txt_distanciarota.Location = new Point(273, 285);
+            txt_distanciarota.Name = "txt_distanciarota";
+            txt_distanciarota.Size = new Size(165, 29);
+            txt_distanciarota.TabIndex = 26;
             // 
-            // textBox7
+            // txt_destinorota
             // 
-            textBox7.Font = new Font("Segoe UI", 12F);
-            textBox7.Location = new Point(273, 247);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(165, 29);
-            textBox7.TabIndex = 25;
+            txt_destinorota.Font = new Font("Segoe UI", 12F);
+            txt_destinorota.Location = new Point(273, 247);
+            txt_destinorota.Name = "txt_destinorota";
+            txt_destinorota.Size = new Size(165, 29);
+            txt_destinorota.TabIndex = 25;
             // 
-            // textBox8
+            // txt_origemrota
             // 
-            textBox8.Font = new Font("Segoe UI", 12F);
-            textBox8.Location = new Point(273, 203);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(165, 29);
-            textBox8.TabIndex = 24;
+            txt_origemrota.Font = new Font("Segoe UI", 12F);
+            txt_origemrota.Location = new Point(273, 203);
+            txt_origemrota.Name = "txt_origemrota";
+            txt_origemrota.Size = new Size(165, 29);
+            txt_origemrota.TabIndex = 24;
             // 
             // textBox9
             // 
             textBox9.Font = new Font("Segoe UI", 12F);
             textBox9.Location = new Point(274, 164);
             textBox9.Name = "textBox9";
+            textBox9.ReadOnly = true;
             textBox9.Size = new Size(164, 29);
             textBox9.TabIndex = 23;
             // 
@@ -550,11 +555,11 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F);
-            label1.Location = new Point(108, 285);
+            label1.Location = new Point(63, 287);
             label1.Name = "label1";
-            label1.Size = new Size(158, 25);
+            label1.Size = new Size(203, 25);
             label1.TabIndex = 22;
-            label1.Text = "Distancia da rota:";
+            label1.Text = "Distancia da rota (KM):";
             // 
             // label2
             // 
@@ -600,7 +605,7 @@
             tab_combustivel.Location = new Point(4, 24);
             tab_combustivel.Name = "tab_combustivel";
             tab_combustivel.Padding = new Padding(3);
-            tab_combustivel.Size = new Size(792, 422);
+            tab_combustivel.Size = new Size(915, 538);
             tab_combustivel.TabIndex = 3;
             tab_combustivel.Text = "Preço Combustível";
             tab_combustivel.UseVisualStyleBackColor = true;
@@ -612,7 +617,7 @@
             tool_combustivel.Items.AddRange(new ToolStripItem[] { btn_salvar_combustivel, btn_editar_combustivel, btn_consultar_combustivel, btn_excluir_combustivel });
             tool_combustivel.Location = new Point(3, 3);
             tool_combustivel.Name = "tool_combustivel";
-            tool_combustivel.Size = new Size(786, 100);
+            tool_combustivel.Size = new Size(909, 100);
             tool_combustivel.TabIndex = 37;
             tool_combustivel.Text = "toolStrip1";
             // 
@@ -735,8 +740,8 @@
             // 
             tab_viagem.Controls.Add(tool_viagem);
             tab_viagem.Controls.Add(dateTimePicker3);
-            tab_viagem.Controls.Add(comboBox3);
-            tab_viagem.Controls.Add(comboBox2);
+            tab_viagem.Controls.Add(cb_motoristaviagem);
+            tab_viagem.Controls.Add(cb_rotaviagem);
             tab_viagem.Controls.Add(cb_veiculoviagem);
             tab_viagem.Controls.Add(label15);
             tab_viagem.Controls.Add(label14);
@@ -749,7 +754,7 @@
             tab_viagem.Location = new Point(4, 24);
             tab_viagem.Name = "tab_viagem";
             tab_viagem.Padding = new Padding(3);
-            tab_viagem.Size = new Size(792, 422);
+            tab_viagem.Size = new Size(915, 538);
             tab_viagem.TabIndex = 4;
             tab_viagem.Text = "Viagem";
             tab_viagem.UseVisualStyleBackColor = true;
@@ -761,7 +766,7 @@
             tool_viagem.Items.AddRange(new ToolStripItem[] { btn_salvar_viagem, btn_editar_viagem, btn_consultar_viagem, btn_excluir_viagem });
             tool_viagem.Location = new Point(3, 3);
             tool_viagem.Name = "tool_viagem";
-            tool_viagem.Size = new Size(786, 100);
+            tool_viagem.Size = new Size(909, 100);
             tool_viagem.TabIndex = 51;
             tool_viagem.Text = "toolStrip1";
             // 
@@ -810,34 +815,36 @@
             // dateTimePicker3
             // 
             dateTimePicker3.Font = new Font("Segoe UI", 12F);
-            dateTimePicker3.Location = new Point(327, 190);
+            dateTimePicker3.Location = new Point(302, 190);
             dateTimePicker3.Name = "dateTimePicker3";
             dateTimePicker3.Size = new Size(315, 29);
             dateTimePicker3.TabIndex = 50;
             // 
-            // comboBox3
+            // cb_motoristaviagem
             // 
-            comboBox3.Font = new Font("Segoe UI", 12F);
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(327, 360);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(164, 29);
-            comboBox3.TabIndex = 49;
+            cb_motoristaviagem.Font = new Font("Segoe UI", 12F);
+            cb_motoristaviagem.FormattingEnabled = true;
+            cb_motoristaviagem.Location = new Point(302, 360);
+            cb_motoristaviagem.Name = "cb_motoristaviagem";
+            cb_motoristaviagem.Size = new Size(411, 29);
+            cb_motoristaviagem.TabIndex = 49;
+            cb_motoristaviagem.DropDown += cb_motoristaviagem_DropDown;
             // 
-            // comboBox2
+            // cb_rotaviagem
             // 
-            comboBox2.Font = new Font("Segoe UI", 12F);
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(327, 316);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(164, 29);
-            comboBox2.TabIndex = 48;
+            cb_rotaviagem.Font = new Font("Segoe UI", 12F);
+            cb_rotaviagem.FormattingEnabled = true;
+            cb_rotaviagem.Location = new Point(302, 316);
+            cb_rotaviagem.Name = "cb_rotaviagem";
+            cb_rotaviagem.Size = new Size(482, 29);
+            cb_rotaviagem.TabIndex = 48;
+            cb_rotaviagem.DropDown += cb_rotaviagem_DropDown;
             // 
             // cb_veiculoviagem
             // 
             cb_veiculoviagem.Font = new Font("Segoe UI", 12F);
             cb_veiculoviagem.FormattingEnabled = true;
-            cb_veiculoviagem.Location = new Point(327, 274);
+            cb_veiculoviagem.Location = new Point(302, 274);
             cb_veiculoviagem.Name = "cb_veiculoviagem";
             cb_veiculoviagem.Size = new Size(164, 29);
             cb_veiculoviagem.TabIndex = 47;
@@ -847,7 +854,7 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI", 15.75F);
-            label15.Location = new Point(209, 360);
+            label15.Location = new Point(184, 360);
             label15.Name = "label15";
             label15.Size = new Size(107, 30);
             label15.TabIndex = 46;
@@ -857,7 +864,7 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI", 15.75F);
-            label14.Location = new Point(154, 315);
+            label14.Location = new Point(129, 315);
             label14.Name = "label14";
             label14.Size = new Size(162, 30);
             label14.TabIndex = 44;
@@ -866,7 +873,7 @@
             // dateTimePicker2
             // 
             dateTimePicker2.Font = new Font("Segoe UI", 12F);
-            dateTimePicker2.Location = new Point(327, 234);
+            dateTimePicker2.Location = new Point(302, 234);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(315, 29);
             dateTimePicker2.TabIndex = 43;
@@ -874,7 +881,7 @@
             // textBox15
             // 
             textBox15.Font = new Font("Segoe UI", 12F);
-            textBox15.Location = new Point(327, 146);
+            textBox15.Location = new Point(302, 146);
             textBox15.Name = "textBox15";
             textBox15.Size = new Size(164, 29);
             textBox15.TabIndex = 40;
@@ -883,7 +890,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 15.75F);
-            label10.Location = new Point(129, 274);
+            label10.Location = new Point(104, 274);
             label10.Name = "label10";
             label10.Size = new Size(187, 30);
             label10.TabIndex = 39;
@@ -893,7 +900,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 15.75F);
-            label11.Location = new Point(35, 233);
+            label11.Location = new Point(10, 233);
             label11.Name = "label11";
             label11.Size = new Size(281, 30);
             label11.TabIndex = 38;
@@ -903,7 +910,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 15.75F);
-            label12.Location = new Point(67, 190);
+            label12.Location = new Point(42, 190);
             label12.Name = "label12";
             label12.Size = new Size(249, 30);
             label12.TabIndex = 37;
@@ -913,7 +920,7 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 15.75F);
-            label13.Location = new Point(201, 146);
+            label13.Location = new Point(176, 146);
             label13.Name = "label13";
             label13.Size = new Size(115, 30);
             label13.TabIndex = 36;
@@ -923,9 +930,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(923, 563);
             Controls.Add(tabControl1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
             tabControl1.ResumeLayout(false);
@@ -977,9 +987,9 @@
         private Label lbl_cnhmotorista;
         private Label lbl_nomemotorista;
         private Label lbl_motoristaid;
-        private TextBox textBox6;
-        private TextBox textBox7;
-        private TextBox textBox8;
+        private TextBox txt_distanciarota;
+        private TextBox txt_destinorota;
+        private TextBox txt_origemrota;
         private TextBox textBox9;
         private Label label1;
         private Label label2;
@@ -1007,8 +1017,8 @@
         private ToolStripButton btn_excluir_veiculo;
         private ComboBox comboBox4;
         private DateTimePicker dateTimePicker3;
-        private ComboBox comboBox3;
-        private ComboBox comboBox2;
+        private ComboBox cb_motoristaviagem;
+        private ComboBox cb_rotaviagem;
         private ComboBox cb_veiculoviagem;
         private ToolStrip tool_motorista;
         private ToolStripButton btn_salvar_motorista;

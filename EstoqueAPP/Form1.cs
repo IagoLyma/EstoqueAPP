@@ -1,11 +1,12 @@
 using System.Data;
 using System.Data.SQLite;
+using static EstoqueAPP.form_veiculo;
 
 namespace EstoqueAPP
 {
     public partial class Form1 : Form
     {
-        string dbPath = @"C:\Users\Iago\Desktop\EstoqueAPP\logistica.db";
+        string dbPath = @"C:\Users\iago.lfarias\Desktop\EstoqueAPP\logistica.db";
 
         string connectString;
         public Form1()
@@ -73,24 +74,28 @@ namespace EstoqueAPP
             {
                 MessageBox.Show("O campo Modelo do Veiculo é obrigatório para inserir!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_modeloveiculo.Focus();
+                return;
             }
 
             if (string.IsNullOrWhiteSpace(txt_placaveiculo.Text))
             {
                 MessageBox.Show("O campo Placa é obrigatório para inserir!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_placaveiculo.Focus();
+                return;
             }
 
             if (string.IsNullOrWhiteSpace(txt_consumoveiculo.Text))
             {
                 MessageBox.Show("O campo Consumo é obrigatório para inserir!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_consumoveiculo.Focus();
+                return;
             }
 
             if (string.IsNullOrWhiteSpace(txt_cargaveiculo.Text))
             {
                 MessageBox.Show("O campo Carga Máxima é obrigatório para inserir!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_cargaveiculo.Focus();
+                return;
             }
 
             else
@@ -135,6 +140,216 @@ namespace EstoqueAPP
         private void cb_veiculoviagem_DropDown(object sender, EventArgs e)
         {
             ConsultaVeiculoViagem();
+        }
+
+        private void ConsultaRotaViagem()
+        {
+            try
+            {
+                using (var connection = new SQLiteConnection(connectString))
+                {
+                    connection.Open();
+
+                    string sqlselect = "SELECT (ORIGEM || ' - Até - ' || DESTINO) AS DESCRICAO, ORIGEM FROM ROTA ORDER BY ORIGEM";
+
+                    using (var adapter = new SQLiteDataAdapter(sqlselect, connection))
+                    {
+
+                        DataTable tabelaRotas = new DataTable();
+
+                        adapter.Fill(tabelaRotas);
+
+                        cb_rotaviagem.DataSource = tabelaRotas;
+
+                        cb_rotaviagem.DisplayMember = "DESCRICAO";
+
+                        cb_rotaviagem.ValueMember = "ORIGEM";
+
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao carregar rotas {ex.Message}");
+            }
+        }
+
+        private void cb_rotaviagem_DropDown(object sender, EventArgs e)
+        {
+            ConsultaRotaViagem();
+        }
+
+        private void ConsultaMotoristaViagem()
+        {
+            try
+            {
+                using (var connection = new SQLiteConnection(connectString))
+                {
+                    connection.Open();
+
+                    string sqlselect = "SELECT (NOME || ' - ' || TELEFONE) AS DESCRICAO, NOME FROM MOTORISTA ORDER BY NOME";
+
+                    using (var adapter = new SQLiteDataAdapter(sqlselect, connection))
+                    {
+
+                        DataTable tabelaMotorista = new DataTable();
+
+                        adapter.Fill(tabelaMotorista);
+
+                        cb_motoristaviagem.DataSource = tabelaMotorista;
+
+                        cb_motoristaviagem.DisplayMember = "DESCRICAO";
+
+                        cb_motoristaviagem.ValueMember = "NOME";
+
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao carregar motoristas {ex.Message}");
+            }
+        }
+
+        private void cb_motoristaviagem_DropDown(object sender, EventArgs e)
+        {
+            ConsultaMotoristaViagem();
+        }
+
+        private void InserirMotorista()
+        {
+            try
+            {
+                using (var connection = new SQLiteConnection(connectString))
+                {
+                    connection.Open();
+
+                    string sqlinsert = "INSERT INTO MOTORISTA (NOME, CNH, TELEFONE) VALUES (@nome, @cnh, @tel);";
+
+                    using (var cmd = new SQLiteCommand(sqlinsert, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@nome", txt_nomemotorista.Text);
+                        cmd.Parameters.AddWithValue("@cnh", txt_cnhmoto.Text);
+                        cmd.Parameters.AddWithValue("@tel", txt_fonemoto.Text);
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Motorista inserido(a) com sucesso!");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao inserir {ex.Message}");
+            }
+        }
+
+        private void btn_salvar_motorista_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txt_nomemotorista.Text))
+            {
+                MessageBox.Show("O campo Nome motorista precisa ser preenchido!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_nomemotorista.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txt_cnhmoto.Text))
+            {
+                MessageBox.Show("O campo Cnh do motorista precisa ser preenchido!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_cnhmoto.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txt_fonemoto.Text))
+            {
+                MessageBox.Show("O campo Fone do motorista precisa ser preenchido!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_fonemoto.Focus();
+                return;
+            }
+
+            else
+            {
+                InserirMotorista();
+            }
+        }
+
+        private void InserirRota()
+        {
+            try
+            {
+                using (var connection = new SQLiteConnection(connectString))
+                {
+                    connection.Open();
+
+                    string sqlinsert = "INSERT INTO ROTA (ORIGEM, DESTINO, DISTANCIA) VALUES (@origem , @destino, @distancia);";
+
+                    using (var cmd = new SQLiteCommand(sqlinsert, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@origem", txt_origemrota.Text);
+                        cmd.Parameters.AddWithValue("@destino", txt_destinorota.Text);
+                        cmd.Parameters.AddWithValue("@distancia", txt_distanciarota.Text);
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Rota inserida com sucesso!");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao inserir {ex.Message}");
+            }
+        }
+
+        private void btn_salvar_rota_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txt_origemrota.Text))
+            {
+                MessageBox.Show("O campo Origem precisa ser preenchido!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_origemrota.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txt_destinorota.Text))
+            {
+                MessageBox.Show("O campo Destino precisa ser preenchido!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_destinorota.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txt_distanciarota.Text))
+            {
+                MessageBox.Show("O campo Distancia precisa ser preenchido!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_distanciarota.Focus();
+                return;
+            }
+
+            else
+            {
+                InserirRota();
+            }
+        }
+
+        private void btn_consultar_veiculo_Click(object sender, EventArgs e)
+        {
+            
+            form_veiculo formSelecao = new form_veiculo();
+
+            if (formSelecao.ShowDialog() == DialogResult.OK)
+            {
+
+                DadosVeiculo veiculo = formSelecao.VeiculoSelecionado;
+
+                txt_veiculoid.Text = veiculo.veiculoid;
+                txt_modeloveiculo.Text = veiculo.modelo;
+                txt_placaveiculo.Text = veiculo.placa;
+                txt_consumoveiculo.Text = veiculo.consumo;
+                txt_cargaveiculo.Text = veiculo.carga;
+            }
         }
     }
 }
