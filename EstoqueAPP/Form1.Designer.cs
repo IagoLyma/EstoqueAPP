@@ -69,7 +69,7 @@
             txt_distanciarota = new TextBox();
             txt_destinorota = new TextBox();
             txt_origemrota = new TextBox();
-            textBox9 = new TextBox();
+            txt_rotaid = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -360,7 +360,9 @@
             btn_consultar_motorista.ImageTransparentColor = Color.Magenta;
             btn_consultar_motorista.Name = "btn_consultar_motorista";
             btn_consultar_motorista.Size = new Size(80, 80);
-            btn_consultar_motorista.Text = "toolStripButton3";
+            btn_consultar_motorista.Text = "Consultar motoristas";
+            btn_consultar_motorista.ToolTipText = "Consultar motorista";
+            btn_consultar_motorista.Click += btn_consultar_motorista_Click;
             // 
             // btn_excluir_motorista
             // 
@@ -451,7 +453,7 @@
             tab_rota.Controls.Add(txt_distanciarota);
             tab_rota.Controls.Add(txt_destinorota);
             tab_rota.Controls.Add(txt_origemrota);
-            tab_rota.Controls.Add(textBox9);
+            tab_rota.Controls.Add(txt_rotaid);
             tab_rota.Controls.Add(label1);
             tab_rota.Controls.Add(label2);
             tab_rota.Controls.Add(label3);
@@ -485,7 +487,7 @@
             btn_salvar_rota.ImageTransparentColor = Color.Magenta;
             btn_salvar_rota.Name = "btn_salvar_rota";
             btn_salvar_rota.Size = new Size(80, 80);
-            btn_salvar_rota.Text = "btn_salvar_rota";
+            btn_salvar_rota.Text = "Salvar / Inserir rota";
             btn_salvar_rota.Click += btn_salvar_rota_Click;
             // 
             // btn_editar_rota
@@ -506,7 +508,9 @@
             btn_consultar_rota.ImageTransparentColor = Color.Magenta;
             btn_consultar_rota.Name = "btn_consultar_rota";
             btn_consultar_rota.Size = new Size(80, 80);
-            btn_consultar_rota.Text = "toolStripButton3";
+            btn_consultar_rota.Text = "Consultar rotas";
+            btn_consultar_rota.ToolTipText = "Consultar rota";
+            btn_consultar_rota.Click += btn_consultar_rota_Click;
             // 
             // btn_excluir_rota
             // 
@@ -542,14 +546,14 @@
             txt_origemrota.Size = new Size(165, 29);
             txt_origemrota.TabIndex = 24;
             // 
-            // textBox9
+            // txt_rotaid
             // 
-            textBox9.Font = new Font("Segoe UI", 12F);
-            textBox9.Location = new Point(274, 164);
-            textBox9.Name = "textBox9";
-            textBox9.ReadOnly = true;
-            textBox9.Size = new Size(164, 29);
-            textBox9.TabIndex = 23;
+            txt_rotaid.Font = new Font("Segoe UI", 12F);
+            txt_rotaid.Location = new Point(274, 164);
+            txt_rotaid.Name = "txt_rotaid";
+            txt_rotaid.ReadOnly = true;
+            txt_rotaid.Size = new Size(164, 29);
+            txt_rotaid.TabIndex = 23;
             // 
             // label1
             // 
@@ -990,7 +994,7 @@
         private TextBox txt_distanciarota;
         private TextBox txt_destinorota;
         private TextBox txt_origemrota;
-        private TextBox textBox9;
+        private TextBox txt_rotaid;
         private Label label1;
         private Label label2;
         private Label label3;

@@ -33,6 +33,7 @@
             txt_pesquisa = new TextBox();
             label1 = new Label();
             grid_veiculos = new DataGridView();
+            btn_resetveiculo = new Button();
             ((System.ComponentModel.ISupportInitialize)grid_veiculos).BeginInit();
             SuspendLayout();
             // 
@@ -75,18 +76,34 @@
             // 
             // grid_veiculos
             // 
+            grid_veiculos.AllowUserToAddRows = false;
+            grid_veiculos.AllowUserToDeleteRows = false;
+            grid_veiculos.AllowUserToOrderColumns = true;
             grid_veiculos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             grid_veiculos.Location = new Point(12, 105);
+            grid_veiculos.MultiSelect = false;
             grid_veiculos.Name = "grid_veiculos";
+            grid_veiculos.ReadOnly = true;
             grid_veiculos.Size = new Size(776, 319);
             grid_veiculos.TabIndex = 5;
             grid_veiculos.CellDoubleClick += grid_veiculos_CellDoubleClick;
+            // 
+            // btn_resetveiculo
+            // 
+            btn_resetveiculo.Location = new Point(401, 63);
+            btn_resetveiculo.Name = "btn_resetveiculo";
+            btn_resetveiculo.Size = new Size(75, 23);
+            btn_resetveiculo.TabIndex = 10;
+            btn_resetveiculo.Text = "Resetar";
+            btn_resetveiculo.UseVisualStyleBackColor = true;
+            btn_resetveiculo.Click += btn_resetveiculo_Click;
             // 
             // form_veiculo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btn_resetveiculo);
             Controls.Add(button2);
             Controls.Add(btn_procurar);
             Controls.Add(txt_pesquisa);
@@ -107,5 +124,6 @@
         private TextBox txt_pesquisa;
         private Label label1;
         private DataGridView grid_veiculos;
+        private Button btn_resetveiculo;
     }
 }

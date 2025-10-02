@@ -118,5 +118,39 @@ namespace EstoqueAPP
                 MessageBox.Show($"Erro ao pesquisar: {ex.Message}");
             }
         }
+
+        private void btn_resetveiculo_Click(object sender, EventArgs e)
+        {
+            ResetarProcura();
+        }
+
+        private void ResetarProcura()
+        {
+            try
+            {
+                using (var connection = new SQLiteConnection(connectString))
+                {
+                    connection.Open();
+
+                    string select = "SELECT * FROM VEICULO;";
+
+                    using (var cmd = new SQLiteCommand(select, connection))
+                    {
+                        cmd.ExecuteNonQuery();
+
+                        using (var adpter = new SQLiteDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            adpter.Fill(dt);
+                            grid_veiculos.DataSource= dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao pesquisar no banco: ${ex.Message}");
+            }
+        }
     }
 }

@@ -1,6 +1,8 @@
 using System.Data;
 using System.Data.SQLite;
 using static EstoqueAPP.form_veiculo;
+using static EstoqueAPP.Rota;
+using static EstoqueAPP.Motorista;
 
 namespace EstoqueAPP
 {
@@ -336,7 +338,7 @@ namespace EstoqueAPP
 
         private void btn_consultar_veiculo_Click(object sender, EventArgs e)
         {
-            
+
             form_veiculo formSelecao = new form_veiculo();
 
             if (formSelecao.ShowDialog() == DialogResult.OK)
@@ -349,6 +351,36 @@ namespace EstoqueAPP
                 txt_placaveiculo.Text = veiculo.placa;
                 txt_consumoveiculo.Text = veiculo.consumo;
                 txt_cargaveiculo.Text = veiculo.carga;
+            }
+        }
+
+        private void btn_consultar_rota_Click(object sender, EventArgs e)
+        {
+            Rota formSelecao = new Rota();
+
+            if (formSelecao.ShowDialog() == DialogResult.OK)
+            {
+                DadosRota rota = formSelecao.RotaSelecionado;
+
+                txt_rotaid.Text = rota.rotaid;
+                txt_origemrota.Text = rota.origemrota;
+                txt_destinorota.Text = rota.destinorota;
+                txt_distanciarota.Text = rota.distanciarota;
+            }
+        }
+
+        private void btn_consultar_motorista_Click(object sender, EventArgs e)
+        {
+            Motorista formSelecao = new Motorista();
+
+            if (formSelecao.ShowDialog() == DialogResult.OK)
+            {
+                DadosMotorista moto = formSelecao.MotoristaSelecionado;
+
+                txt_motoid.Text = moto.motoristaid;
+                txt_nomemotorista.Text = moto.nomemoto;
+                txt_cnhmoto.Text = moto.cnhmoto;
+                txt_fonemoto.Text = moto.fonemoto;
             }
         }
     }

@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             button2 = new Button();
-            button1 = new Button();
-            textBox1 = new TextBox();
+            btn_procurarmotorista = new Button();
+            txt_pesquisarmoto = new TextBox();
             label1 = new Label();
-            dataGridView1 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            grid_motorista = new DataGridView();
+            btn_resetmoto = new Button();
+            ((System.ComponentModel.ISupportInitialize)grid_motorista).BeginInit();
             SuspendLayout();
             // 
             // button2
@@ -45,22 +46,23 @@
             button2.Text = "Voltar";
             button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btn_procurarmotorista
             // 
-            button1.Location = new Point(309, 62);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 8;
-            button1.Text = "Procurar";
-            button1.UseVisualStyleBackColor = true;
+            btn_procurarmotorista.Location = new Point(309, 62);
+            btn_procurarmotorista.Name = "btn_procurarmotorista";
+            btn_procurarmotorista.Size = new Size(75, 23);
+            btn_procurarmotorista.TabIndex = 8;
+            btn_procurarmotorista.Text = "Procurar";
+            btn_procurarmotorista.UseVisualStyleBackColor = true;
+            btn_procurarmotorista.Click += btn_procurarmotorista_Click;
             // 
-            // textBox1
+            // txt_pesquisarmoto
             // 
-            textBox1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(12, 61);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(277, 25);
-            textBox1.TabIndex = 7;
+            txt_pesquisarmoto.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txt_pesquisarmoto.Location = new Point(12, 61);
+            txt_pesquisarmoto.Name = "txt_pesquisarmoto";
+            txt_pesquisarmoto.Size = new Size(277, 25);
+            txt_pesquisarmoto.TabIndex = 7;
             // 
             // label1
             // 
@@ -72,27 +74,44 @@
             label1.TabIndex = 6;
             label1.Text = "Pesquisar";
             // 
-            // dataGridView1
+            // grid_motorista
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 105);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(776, 319);
-            dataGridView1.TabIndex = 5;
+            grid_motorista.AllowUserToAddRows = false;
+            grid_motorista.AllowUserToDeleteRows = false;
+            grid_motorista.AllowUserToOrderColumns = true;
+            grid_motorista.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grid_motorista.Location = new Point(12, 105);
+            grid_motorista.Name = "grid_motorista";
+            grid_motorista.ReadOnly = true;
+            grid_motorista.Size = new Size(776, 319);
+            grid_motorista.TabIndex = 5;
+            grid_motorista.CellDoubleClick += grid_motorista_CellDoubleClick;
+            // 
+            // btn_resetmoto
+            // 
+            btn_resetmoto.Location = new Point(407, 61);
+            btn_resetmoto.Name = "btn_resetmoto";
+            btn_resetmoto.Size = new Size(75, 23);
+            btn_resetmoto.TabIndex = 10;
+            btn_resetmoto.Text = "Resetar";
+            btn_resetmoto.UseVisualStyleBackColor = true;
+            btn_resetmoto.Click += btn_resetmoto_Click;
             // 
             // Motorista
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btn_resetmoto);
             Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(textBox1);
+            Controls.Add(btn_procurarmotorista);
+            Controls.Add(txt_pesquisarmoto);
             Controls.Add(label1);
-            Controls.Add(dataGridView1);
+            Controls.Add(grid_motorista);
             Name = "Motorista";
             Text = "Motorista";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += Motorista_Load;
+            ((System.ComponentModel.ISupportInitialize)grid_motorista).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -100,9 +119,10 @@
         #endregion
 
         private Button button2;
-        private Button button1;
-        private TextBox textBox1;
+        private Button btn_procurarmotorista;
+        private TextBox txt_pesquisarmoto;
         private Label label1;
-        private DataGridView dataGridView1;
+        private DataGridView grid_motorista;
+        private Button btn_resetmoto;
     }
 }
