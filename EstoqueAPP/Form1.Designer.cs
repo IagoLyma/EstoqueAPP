@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            tabControl1 = new TabControl();
+            tabcontrol = new TabControl();
             tab_veiculo = new TabPage();
             tool_veiculo = new ToolStrip();
             btn_salvar_veiculo = new ToolStripButton();
@@ -80,10 +80,10 @@
             btn_editar_combustivel = new ToolStripButton();
             btn_consultar_combustivel = new ToolStripButton();
             btn_excluir_combustivel = new ToolStripButton();
-            comboBox4 = new ComboBox();
-            dateTimePicker1 = new DateTimePicker();
-            textBox10 = new TextBox();
-            textBox13 = new TextBox();
+            cb_precomb = new ComboBox();
+            date_precomb = new DateTimePicker();
+            txt_precoprecomb = new TextBox();
+            txt_combid = new TextBox();
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
@@ -94,19 +94,19 @@
             btn_editar_viagem = new ToolStripButton();
             btn_consultar_viagem = new ToolStripButton();
             btn_excluir_viagem = new ToolStripButton();
-            dateTimePicker3 = new DateTimePicker();
+            date_saidaviagem = new DateTimePicker();
             cb_motoristaviagem = new ComboBox();
             cb_rotaviagem = new ComboBox();
             cb_veiculoviagem = new ComboBox();
             label15 = new Label();
             label14 = new Label();
-            dateTimePicker2 = new DateTimePicker();
-            textBox15 = new TextBox();
+            date_viagemchegada = new DateTimePicker();
+            txt_viagemid = new TextBox();
             label10 = new Label();
             label11 = new Label();
             label12 = new Label();
             label13 = new Label();
-            tabControl1.SuspendLayout();
+            tabcontrol.SuspendLayout();
             tab_veiculo.SuspendLayout();
             tool_veiculo.SuspendLayout();
             tab_motorista.SuspendLayout();
@@ -119,18 +119,19 @@
             tool_viagem.SuspendLayout();
             SuspendLayout();
             // 
-            // tabControl1
+            // tabcontrol
             // 
-            tabControl1.Controls.Add(tab_veiculo);
-            tabControl1.Controls.Add(tab_motorista);
-            tabControl1.Controls.Add(tab_rota);
-            tabControl1.Controls.Add(tab_combustivel);
-            tabControl1.Controls.Add(tab_viagem);
-            tabControl1.Location = new Point(0, 0);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(923, 566);
-            tabControl1.TabIndex = 1;
+            tabcontrol.Controls.Add(tab_veiculo);
+            tabcontrol.Controls.Add(tab_motorista);
+            tabcontrol.Controls.Add(tab_rota);
+            tabcontrol.Controls.Add(tab_combustivel);
+            tabcontrol.Controls.Add(tab_viagem);
+            tabcontrol.Location = new Point(0, 0);
+            tabcontrol.Name = "tabcontrol";
+            tabcontrol.SelectedIndex = 0;
+            tabcontrol.Size = new Size(923, 566);
+            tabcontrol.TabIndex = 1;
+            tabcontrol.SelectedIndexChanged += tabcontrol_SelectedIndexChanged;
             // 
             // tab_veiculo
             // 
@@ -598,10 +599,10 @@
             // tab_combustivel
             // 
             tab_combustivel.Controls.Add(tool_combustivel);
-            tab_combustivel.Controls.Add(comboBox4);
-            tab_combustivel.Controls.Add(dateTimePicker1);
-            tab_combustivel.Controls.Add(textBox10);
-            tab_combustivel.Controls.Add(textBox13);
+            tab_combustivel.Controls.Add(cb_precomb);
+            tab_combustivel.Controls.Add(date_precomb);
+            tab_combustivel.Controls.Add(txt_precoprecomb);
+            tab_combustivel.Controls.Add(txt_combid);
             tab_combustivel.Controls.Add(label6);
             tab_combustivel.Controls.Add(label7);
             tab_combustivel.Controls.Add(label8);
@@ -636,6 +637,8 @@
             btn_salvar_combustivel.Name = "btn_salvar_combustivel";
             btn_salvar_combustivel.Size = new Size(80, 80);
             btn_salvar_combustivel.Text = "toolStripButton1";
+            btn_salvar_combustivel.ToolTipText = "Salvar / Inserir comb";
+            btn_salvar_combustivel.Click += btn_salvar_combustivel_Click;
             // 
             // btn_editar_combustivel
             // 
@@ -655,7 +658,8 @@
             btn_consultar_combustivel.ImageTransparentColor = Color.Magenta;
             btn_consultar_combustivel.Name = "btn_consultar_combustivel";
             btn_consultar_combustivel.Size = new Size(80, 80);
-            btn_consultar_combustivel.Text = "toolStripButton3";
+            btn_consultar_combustivel.Text = "Pesquisar comb";
+            btn_consultar_combustivel.Click += btn_consultar_combustivel_Click;
             // 
             // btn_excluir_combustivel
             // 
@@ -667,38 +671,43 @@
             btn_excluir_combustivel.Size = new Size(80, 80);
             btn_excluir_combustivel.Text = "toolStripButton4";
             // 
-            // comboBox4
+            // cb_precomb
             // 
-            comboBox4.Font = new Font("Segoe UI", 12F);
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(306, 212);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(165, 29);
-            comboBox4.TabIndex = 36;
+            cb_precomb.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_precomb.Font = new Font("Segoe UI", 12F);
+            cb_precomb.FormattingEnabled = true;
+            cb_precomb.Items.AddRange(new object[] { "Gasolina", "Diesel" });
+            cb_precomb.Location = new Point(306, 212);
+            cb_precomb.Name = "cb_precomb";
+            cb_precomb.Size = new Size(165, 29);
+            cb_precomb.TabIndex = 36;
             // 
-            // dateTimePicker1
+            // date_precomb
             // 
-            dateTimePicker1.Font = new Font("Segoe UI", 12F);
-            dateTimePicker1.Location = new Point(306, 259);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(297, 29);
-            dateTimePicker1.TabIndex = 35;
+            date_precomb.Font = new Font("Segoe UI", 12F);
+            date_precomb.Format = DateTimePickerFormat.Short;
+            date_precomb.Location = new Point(306, 259);
+            date_precomb.Name = "date_precomb";
+            date_precomb.RightToLeft = RightToLeft.No;
+            date_precomb.Size = new Size(164, 29);
+            date_precomb.TabIndex = 35;
             // 
-            // textBox10
+            // txt_precoprecomb
             // 
-            textBox10.Font = new Font("Segoe UI", 12F);
-            textBox10.Location = new Point(306, 299);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(165, 29);
-            textBox10.TabIndex = 34;
+            txt_precoprecomb.Font = new Font("Segoe UI", 12F);
+            txt_precoprecomb.Location = new Point(306, 299);
+            txt_precoprecomb.Name = "txt_precoprecomb";
+            txt_precoprecomb.Size = new Size(165, 29);
+            txt_precoprecomb.TabIndex = 34;
             // 
-            // textBox13
+            // txt_combid
             // 
-            textBox13.Font = new Font("Segoe UI", 12F);
-            textBox13.Location = new Point(306, 171);
-            textBox13.Name = "textBox13";
-            textBox13.Size = new Size(164, 29);
-            textBox13.TabIndex = 31;
+            txt_combid.Font = new Font("Segoe UI", 12F);
+            txt_combid.Location = new Point(306, 171);
+            txt_combid.Name = "txt_combid";
+            txt_combid.ReadOnly = true;
+            txt_combid.Size = new Size(164, 29);
+            txt_combid.TabIndex = 31;
             // 
             // label6
             // 
@@ -743,14 +752,14 @@
             // tab_viagem
             // 
             tab_viagem.Controls.Add(tool_viagem);
-            tab_viagem.Controls.Add(dateTimePicker3);
+            tab_viagem.Controls.Add(date_saidaviagem);
             tab_viagem.Controls.Add(cb_motoristaviagem);
             tab_viagem.Controls.Add(cb_rotaviagem);
             tab_viagem.Controls.Add(cb_veiculoviagem);
             tab_viagem.Controls.Add(label15);
             tab_viagem.Controls.Add(label14);
-            tab_viagem.Controls.Add(dateTimePicker2);
-            tab_viagem.Controls.Add(textBox15);
+            tab_viagem.Controls.Add(date_viagemchegada);
+            tab_viagem.Controls.Add(txt_viagemid);
             tab_viagem.Controls.Add(label10);
             tab_viagem.Controls.Add(label11);
             tab_viagem.Controls.Add(label12);
@@ -816,13 +825,13 @@
             btn_excluir_viagem.Size = new Size(80, 80);
             btn_excluir_viagem.Text = "toolStripButton4";
             // 
-            // dateTimePicker3
+            // date_saidaviagem
             // 
-            dateTimePicker3.Font = new Font("Segoe UI", 12F);
-            dateTimePicker3.Location = new Point(302, 190);
-            dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(315, 29);
-            dateTimePicker3.TabIndex = 50;
+            date_saidaviagem.Font = new Font("Segoe UI", 12F);
+            date_saidaviagem.Location = new Point(302, 190);
+            date_saidaviagem.Name = "date_saidaviagem";
+            date_saidaviagem.Size = new Size(315, 29);
+            date_saidaviagem.TabIndex = 50;
             // 
             // cb_motoristaviagem
             // 
@@ -874,21 +883,21 @@
             label14.TabIndex = 44;
             label14.Text = "Rota da viagem:";
             // 
-            // dateTimePicker2
+            // date_viagemchegada
             // 
-            dateTimePicker2.Font = new Font("Segoe UI", 12F);
-            dateTimePicker2.Location = new Point(302, 234);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(315, 29);
-            dateTimePicker2.TabIndex = 43;
+            date_viagemchegada.Font = new Font("Segoe UI", 12F);
+            date_viagemchegada.Location = new Point(302, 234);
+            date_viagemchegada.Name = "date_viagemchegada";
+            date_viagemchegada.Size = new Size(315, 29);
+            date_viagemchegada.TabIndex = 43;
             // 
-            // textBox15
+            // txt_viagemid
             // 
-            textBox15.Font = new Font("Segoe UI", 12F);
-            textBox15.Location = new Point(302, 146);
-            textBox15.Name = "textBox15";
-            textBox15.Size = new Size(164, 29);
-            textBox15.TabIndex = 40;
+            txt_viagemid.Font = new Font("Segoe UI", 12F);
+            txt_viagemid.Location = new Point(302, 146);
+            txt_viagemid.Name = "txt_viagemid";
+            txt_viagemid.Size = new Size(164, 29);
+            txt_viagemid.TabIndex = 40;
             // 
             // label10
             // 
@@ -935,14 +944,14 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(923, 563);
-            Controls.Add(tabControl1);
+            Controls.Add(tabcontrol);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
-            tabControl1.ResumeLayout(false);
+            tabcontrol.ResumeLayout(false);
             tab_veiculo.ResumeLayout(false);
             tab_veiculo.PerformLayout();
             tool_veiculo.ResumeLayout(false);
@@ -967,7 +976,7 @@
         }
 
         #endregion
-        private TabControl tabControl1;
+        private TabControl tabcontrol;
         private TabPage tab_veiculo;
         private TabPage tab_motorista;
         private TabPage tab_rota;
@@ -999,17 +1008,17 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private DateTimePicker dateTimePicker1;
-        private TextBox textBox10;
-        private TextBox textBox13;
+        private DateTimePicker date_precomb;
+        private TextBox txt_precoprecomb;
+        private TextBox txt_combid;
         private Label label6;
         private Label label7;
         private Label label8;
         private Label label9;
         private Label label15;
         private Label label14;
-        private DateTimePicker dateTimePicker2;
-        private TextBox textBox15;
+        private DateTimePicker date_viagemchegada;
+        private TextBox txt_viagemid;
         private Label label10;
         private Label label11;
         private Label label12;
@@ -1019,8 +1028,8 @@
         private ToolStripButton btn_editar_veiculo;
         private ToolStripButton btn_consultar_veiculo;
         private ToolStripButton btn_excluir_veiculo;
-        private ComboBox comboBox4;
-        private DateTimePicker dateTimePicker3;
+        private ComboBox cb_precomb;
+        private DateTimePicker date_saidaviagem;
         private ComboBox cb_motoristaviagem;
         private ComboBox cb_rotaviagem;
         private ComboBox cb_veiculoviagem;

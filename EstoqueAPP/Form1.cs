@@ -3,6 +3,8 @@ using System.Data.SQLite;
 using static EstoqueAPP.form_veiculo;
 using static EstoqueAPP.Rota;
 using static EstoqueAPP.Motorista;
+using static EstoqueAPP.Combust;
+using System.Windows.Forms.VisualStyles;
 
 namespace EstoqueAPP
 {
@@ -381,6 +383,120 @@ namespace EstoqueAPP
                 txt_nomemotorista.Text = moto.nomemoto;
                 txt_cnhmoto.Text = moto.cnhmoto;
                 txt_fonemoto.Text = moto.fonemoto;
+            }
+        }
+
+        private void tabcontrol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            limparcampos();
+        }
+
+        private void limparcampos()
+        {
+            txt_veiculoid.Clear();
+            txt_modeloveiculo.Clear();
+            txt_placaveiculo.Clear();
+            txt_consumoveiculo.Clear();
+            txt_cargaveiculo.Clear();
+
+            txt_motoid.Clear();
+            txt_nomemotorista.Clear();
+            txt_cnhmoto.Clear();
+            txt_fonemoto.Clear();
+
+            txt_rotaid.Clear();
+            txt_origemrota.Clear();
+            txt_destinorota.Clear();
+            txt_distanciarota.Clear();
+
+            txt_combid.Clear();
+            cb_precomb.SelectedIndex = -1;
+            txt_precoprecomb.Clear();
+
+            txt_viagemid.Clear();
+            cb_veiculoviagem.SelectedIndex = -1;
+            cb_rotaviagem.SelectedIndex = -1;
+            cb_motoristaviagem.SelectedIndex = -1;
+        }
+
+        private void btn_consultar_combustivel_Click(object sender, EventArgs e)
+        {
+            Combust formSelecao = new Combust();
+
+            if (formSelecao.ShowDialog() == DialogResult.OK)
+            {
+                PrecoCombustivel comb = formSelecao.CombSelecionado;
+
+                txt_combid.Text = comb.precoid;
+                cb_precomb.Text = comb.comb;
+                txt_precoprecomb.Text = comb.precocomb;
+
+                if (DateTime.TryParse(comb.dataconscomb, out DateTime dataDB))
+                {
+                    date_precomb.Value = dataDB;
+                }
+            }
+        }
+
+        private void btn_salvar_combustivel_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(cb_precomb.Text))
+            {
+                MessageBox.Show("O campo Combustivel não pode ser vazio!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cb_precomb.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(date_precomb.Text))
+            {
+                MessageBox.Show("O campo data precisa ser preenchido!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                date_precomb.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txt_precoprecomb.Text))
+            {
+                MessageBox.Show("O campo preço precisa ser preenchido!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_precoprecomb.Focus();
+                return;
+            }
+
+            else
+            {
+                InserirComb();
+            }
+        }
+
+        private void InserirComb()
+        {
+            try
+            {
+                using (var connection = new SQLiteConnection(connectString))
+                {
+                    connection.Open();
+
+                    string sqlinsert = "INSERT INTO PRECO_COMBUSTIVEL (COMBUSTIVEL, PRECO, DATA_CONSULTA) VALUES (@comb, @preco, @date);";
+
+                    using (var cmd = new SQLiteCommand(sqlinsert, connection))
+                    {
+
+                        DateTime dataParaInserir = date_precomb.Value;
+
+                        cmd.Parameters.AddWithValue("@comb", cb_precomb.Text);
+                        cmd.Parameters.AddWithValue("@preco", txt_precoprecomb.Text);
+                        string dataFormatada = dataParaInserir.ToString("yyyy-MM-dd");
+                        cmd.Parameters.AddWithValue("@date", dataFormatada);
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Combustivel inserido com sucesso!");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao inserir {ex.Message}");
             }
         }
     }
