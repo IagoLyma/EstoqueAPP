@@ -1013,7 +1013,7 @@ namespace EstoqueAPP
                         cmd.Parameters.AddWithValue("@motoristaId", cb_motoristaviagem.SelectedValue);
                         cmd.Parameters.AddWithValue("@rotaId", cb_rotaviagem.SelectedValue);
 
-                        // Outros campos
+                        
                         cmd.Parameters.AddWithValue("@saida", dataSaida);
                         cmd.Parameters.AddWithValue("@chegada", dataChegada);
                         cmd.Parameters.AddWithValue("@situacao", cb_situacao_viagem.Text);
@@ -1133,6 +1133,8 @@ namespace EstoqueAPP
                         {
                             MessageBox.Show("Viagem não encontrada ou nenhum dado alterado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+
+                        limparcampos();
                     }
                 }
             }
@@ -1181,6 +1183,8 @@ namespace EstoqueAPP
                         {
                             MessageBox.Show("Viagem não encontrada.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+
+                        limparcampos();
                     }
                 }
             }
