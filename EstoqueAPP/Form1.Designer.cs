@@ -89,6 +89,8 @@
             label8 = new Label();
             label9 = new Label();
             tab_viagem = new TabPage();
+            cb_situacao_viagem = new ComboBox();
+            txt_situacao = new Label();
             tool_viagem = new ToolStrip();
             btn_salvar_viagem = new ToolStripButton();
             btn_editar_viagem = new ToolStripButton();
@@ -175,7 +177,7 @@
             btn_salvar_veiculo.ImageTransparentColor = Color.Magenta;
             btn_salvar_veiculo.Name = "btn_salvar_veiculo";
             btn_salvar_veiculo.Size = new Size(80, 80);
-            btn_salvar_veiculo.Text = "toolStripButton1";
+            btn_salvar_veiculo.Text = "Inserir";
             btn_salvar_veiculo.Click += btn_salvar_veiculo_Click;
             // 
             // btn_editar_veiculo
@@ -186,7 +188,8 @@
             btn_editar_veiculo.ImageTransparentColor = Color.Magenta;
             btn_editar_veiculo.Name = "btn_editar_veiculo";
             btn_editar_veiculo.Size = new Size(80, 80);
-            btn_editar_veiculo.Text = "toolStripButton2";
+            btn_editar_veiculo.Text = "Editar";
+            btn_editar_veiculo.Click += btn_editar_veiculo_Click;
             // 
             // btn_consultar_veiculo
             // 
@@ -207,7 +210,8 @@
             btn_excluir_veiculo.ImageTransparentColor = Color.Magenta;
             btn_excluir_veiculo.Name = "btn_excluir_veiculo";
             btn_excluir_veiculo.Size = new Size(80, 80);
-            btn_excluir_veiculo.Text = "toolStripButton4";
+            btn_excluir_veiculo.Text = "Deletar";
+            btn_excluir_veiculo.Click += btn_excluir_veiculo_Click;
             // 
             // txt_cargaveiculo
             // 
@@ -328,7 +332,7 @@
             tool_motorista.Name = "tool_motorista";
             tool_motorista.Size = new Size(909, 100);
             tool_motorista.TabIndex = 19;
-            tool_motorista.Text = "toolStrip1";
+            tool_motorista.Text = "toolstrip";
             // 
             // btn_salvar_motorista
             // 
@@ -340,7 +344,7 @@
             btn_salvar_motorista.ImageTransparentColor = Color.Magenta;
             btn_salvar_motorista.Name = "btn_salvar_motorista";
             btn_salvar_motorista.Size = new Size(80, 80);
-            btn_salvar_motorista.Text = "Inserir / Salvar";
+            btn_salvar_motorista.Text = "Inserir";
             btn_salvar_motorista.Click += btn_salvar_motorista_Click;
             // 
             // btn_editar_motorista
@@ -351,7 +355,8 @@
             btn_editar_motorista.ImageTransparentColor = Color.Magenta;
             btn_editar_motorista.Name = "btn_editar_motorista";
             btn_editar_motorista.Size = new Size(80, 80);
-            btn_editar_motorista.Text = "toolStripButton2";
+            btn_editar_motorista.Text = "Editar";
+            btn_editar_motorista.Click += btn_editar_motorista_Click;
             // 
             // btn_consultar_motorista
             // 
@@ -361,7 +366,7 @@
             btn_consultar_motorista.ImageTransparentColor = Color.Magenta;
             btn_consultar_motorista.Name = "btn_consultar_motorista";
             btn_consultar_motorista.Size = new Size(80, 80);
-            btn_consultar_motorista.Text = "Consultar motoristas";
+            btn_consultar_motorista.Text = "Consultar";
             btn_consultar_motorista.ToolTipText = "Consultar motorista";
             btn_consultar_motorista.Click += btn_consultar_motorista_Click;
             // 
@@ -373,7 +378,8 @@
             btn_excluir_motorista.ImageTransparentColor = Color.Magenta;
             btn_excluir_motorista.Name = "btn_excluir_motorista";
             btn_excluir_motorista.Size = new Size(80, 80);
-            btn_excluir_motorista.Text = "toolStripButton4";
+            btn_excluir_motorista.Text = "Deletar";
+            btn_excluir_motorista.Click += btn_excluir_motorista_Click;
             // 
             // txt_fonemoto
             // 
@@ -488,7 +494,7 @@
             btn_salvar_rota.ImageTransparentColor = Color.Magenta;
             btn_salvar_rota.Name = "btn_salvar_rota";
             btn_salvar_rota.Size = new Size(80, 80);
-            btn_salvar_rota.Text = "Salvar / Inserir rota";
+            btn_salvar_rota.Text = "Salvar";
             btn_salvar_rota.Click += btn_salvar_rota_Click;
             // 
             // btn_editar_rota
@@ -499,7 +505,8 @@
             btn_editar_rota.ImageTransparentColor = Color.Magenta;
             btn_editar_rota.Name = "btn_editar_rota";
             btn_editar_rota.Size = new Size(80, 80);
-            btn_editar_rota.Text = "toolStripButton2";
+            btn_editar_rota.Text = "Editar";
+            btn_editar_rota.Click += btn_editar_rota_Click;
             // 
             // btn_consultar_rota
             // 
@@ -521,7 +528,8 @@
             btn_excluir_rota.ImageTransparentColor = Color.Magenta;
             btn_excluir_rota.Name = "btn_excluir_rota";
             btn_excluir_rota.Size = new Size(80, 80);
-            btn_excluir_rota.Text = "toolStripButton4";
+            btn_excluir_rota.Text = "Deletar";
+            btn_excluir_rota.Click += btn_excluir_rota_Click;
             // 
             // txt_distanciarota
             // 
@@ -636,7 +644,7 @@
             btn_salvar_combustivel.ImageTransparentColor = Color.Magenta;
             btn_salvar_combustivel.Name = "btn_salvar_combustivel";
             btn_salvar_combustivel.Size = new Size(80, 80);
-            btn_salvar_combustivel.Text = "toolStripButton1";
+            btn_salvar_combustivel.Text = "Inserir";
             btn_salvar_combustivel.ToolTipText = "Salvar / Inserir comb";
             btn_salvar_combustivel.Click += btn_salvar_combustivel_Click;
             // 
@@ -648,7 +656,8 @@
             btn_editar_combustivel.ImageTransparentColor = Color.Magenta;
             btn_editar_combustivel.Name = "btn_editar_combustivel";
             btn_editar_combustivel.Size = new Size(80, 80);
-            btn_editar_combustivel.Text = "toolStripButton2";
+            btn_editar_combustivel.Text = "Editar";
+            btn_editar_combustivel.Click += btn_editar_combustivel_Click;
             // 
             // btn_consultar_combustivel
             // 
@@ -669,7 +678,8 @@
             btn_excluir_combustivel.ImageTransparentColor = Color.Magenta;
             btn_excluir_combustivel.Name = "btn_excluir_combustivel";
             btn_excluir_combustivel.Size = new Size(80, 80);
-            btn_excluir_combustivel.Text = "toolStripButton4";
+            btn_excluir_combustivel.Text = "Deletar";
+            btn_excluir_combustivel.Click += btn_excluir_combustivel_Click;
             // 
             // cb_precomb
             // 
@@ -751,6 +761,8 @@
             // 
             // tab_viagem
             // 
+            tab_viagem.Controls.Add(cb_situacao_viagem);
+            tab_viagem.Controls.Add(txt_situacao);
             tab_viagem.Controls.Add(tool_viagem);
             tab_viagem.Controls.Add(date_saidaviagem);
             tab_viagem.Controls.Add(cb_motoristaviagem);
@@ -771,6 +783,25 @@
             tab_viagem.TabIndex = 4;
             tab_viagem.Text = "Viagem";
             tab_viagem.UseVisualStyleBackColor = true;
+            // 
+            // cb_situacao_viagem
+            // 
+            cb_situacao_viagem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cb_situacao_viagem.FormattingEnabled = true;
+            cb_situacao_viagem.Location = new Point(302, 409);
+            cb_situacao_viagem.Name = "cb_situacao_viagem";
+            cb_situacao_viagem.Size = new Size(209, 29);
+            cb_situacao_viagem.TabIndex = 54;
+            // 
+            // txt_situacao
+            // 
+            txt_situacao.AutoSize = true;
+            txt_situacao.Font = new Font("Segoe UI", 15.75F);
+            txt_situacao.Location = new Point(194, 408);
+            txt_situacao.Name = "txt_situacao";
+            txt_situacao.Size = new Size(97, 30);
+            txt_situacao.TabIndex = 53;
+            txt_situacao.Text = "Situação:";
             // 
             // tool_viagem
             // 
@@ -793,17 +824,22 @@
             btn_salvar_viagem.ImageTransparentColor = Color.Magenta;
             btn_salvar_viagem.Name = "btn_salvar_viagem";
             btn_salvar_viagem.Size = new Size(80, 80);
-            btn_salvar_viagem.Text = "toolStripButton1";
+            btn_salvar_viagem.Text = "Inserir";
+            btn_salvar_viagem.Click += btn_salvar_viagem_Click;
             // 
             // btn_editar_viagem
             // 
             btn_editar_viagem.AutoSize = false;
+            btn_editar_viagem.AutoToolTip = false;
             btn_editar_viagem.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btn_editar_viagem.DoubleClickEnabled = true;
             btn_editar_viagem.Image = (Image)resources.GetObject("btn_editar_viagem.Image");
             btn_editar_viagem.ImageTransparentColor = Color.Magenta;
             btn_editar_viagem.Name = "btn_editar_viagem";
             btn_editar_viagem.Size = new Size(80, 80);
-            btn_editar_viagem.Text = "toolStripButton2";
+            btn_editar_viagem.Text = "Editar";
+            btn_editar_viagem.ToolTipText = "Editar";
+            btn_editar_viagem.Click += btn_editar_viagem_Click;
             // 
             // btn_consultar_viagem
             // 
@@ -813,7 +849,8 @@
             btn_consultar_viagem.ImageTransparentColor = Color.Magenta;
             btn_consultar_viagem.Name = "btn_consultar_viagem";
             btn_consultar_viagem.Size = new Size(80, 80);
-            btn_consultar_viagem.Text = "toolStripButton3";
+            btn_consultar_viagem.Text = "Pesquisar";
+            btn_consultar_viagem.Click += btn_consultar_viagem_Click;
             // 
             // btn_excluir_viagem
             // 
@@ -824,13 +861,16 @@
             btn_excluir_viagem.Name = "btn_excluir_viagem";
             btn_excluir_viagem.Size = new Size(80, 80);
             btn_excluir_viagem.Text = "toolStripButton4";
+            btn_excluir_viagem.ToolTipText = "Deletar";
+            btn_excluir_viagem.Click += btn_excluir_viagem_Click;
             // 
             // date_saidaviagem
             // 
             date_saidaviagem.Font = new Font("Segoe UI", 12F);
+            date_saidaviagem.Format = DateTimePickerFormat.Short;
             date_saidaviagem.Location = new Point(302, 190);
             date_saidaviagem.Name = "date_saidaviagem";
-            date_saidaviagem.Size = new Size(315, 29);
+            date_saidaviagem.Size = new Size(177, 29);
             date_saidaviagem.TabIndex = 50;
             // 
             // cb_motoristaviagem
@@ -859,7 +899,7 @@
             cb_veiculoviagem.FormattingEnabled = true;
             cb_veiculoviagem.Location = new Point(302, 274);
             cb_veiculoviagem.Name = "cb_veiculoviagem";
-            cb_veiculoviagem.Size = new Size(164, 29);
+            cb_veiculoviagem.Size = new Size(276, 29);
             cb_veiculoviagem.TabIndex = 47;
             cb_veiculoviagem.DropDown += cb_veiculoviagem_DropDown;
             // 
@@ -886,9 +926,10 @@
             // date_viagemchegada
             // 
             date_viagemchegada.Font = new Font("Segoe UI", 12F);
+            date_viagemchegada.Format = DateTimePickerFormat.Short;
             date_viagemchegada.Location = new Point(302, 234);
             date_viagemchegada.Name = "date_viagemchegada";
-            date_viagemchegada.Size = new Size(315, 29);
+            date_viagemchegada.Size = new Size(177, 29);
             date_viagemchegada.TabIndex = 43;
             // 
             // txt_viagemid
@@ -896,6 +937,7 @@
             txt_viagemid.Font = new Font("Segoe UI", 12F);
             txt_viagemid.Location = new Point(302, 146);
             txt_viagemid.Name = "txt_viagemid";
+            txt_viagemid.ReadOnly = true;
             txt_viagemid.Size = new Size(164, 29);
             txt_viagemid.TabIndex = 40;
             // 
@@ -1053,5 +1095,7 @@
         private ToolStripButton btn_editar_viagem;
         private ToolStripButton btn_consultar_viagem;
         private ToolStripButton btn_excluir_viagem;
+        private ComboBox cb_situacao_viagem;
+        private Label txt_situacao;
     }
 }
