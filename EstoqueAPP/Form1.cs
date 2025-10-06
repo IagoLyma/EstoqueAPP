@@ -41,6 +41,10 @@ namespace EstoqueAPP
         {
             TestarConexao();
 
+            ConsultaVeiculoViagem();
+            ConsultaRotaViagem();
+            ConsultaMotoristaViagem();
+
             CarregarSituacoesViagem();
 
 
@@ -428,6 +432,7 @@ namespace EstoqueAPP
             cb_veiculoviagem.SelectedIndex = -1;
             cb_rotaviagem.SelectedIndex = -1;
             cb_motoristaviagem.SelectedIndex = -1;
+            cb_situacao_viagem.SelectedIndex = -1;
         }
 
         private void btn_consultar_combustivel_Click(object sender, EventArgs e)
@@ -1051,7 +1056,6 @@ namespace EstoqueAPP
             {
                 DadosViagem viagem = formSelecao.ViagemSelecionada;
 
-
                 txt_viagemid.Text = viagem.viagemid;
 
                 if (DateTime.TryParse(viagem.dataSaida, out DateTime dataSaidaDB))
@@ -1060,12 +1064,31 @@ namespace EstoqueAPP
                 if (DateTime.TryParse(viagem.dataChegada, out DateTime dataChegadaDB))
                     date_viagemchegada.Value = dataChegadaDB;
 
+                try
+                {
 
-                cb_veiculoviagem.SelectedValue = viagem.veiculoPlaca;
+                    int veiculoId = Convert.ToInt32(viagem.veiculoPlaca);
+                    cb_veiculoviagem.SelectedValue = veiculoId;
+                }
+                catch (FormatException) { }
 
-                cb_rotaviagem.SelectedValue = viagem.rotaOrigem;
+                try
+                {
+                    int rotaId = Convert.ToInt32(viagem.rotaOrigem);
+                    cb_rotaviagem.SelectedValue = rotaId;
+                }
+                catch (FormatException) { }
 
-                cb_motoristaviagem.SelectedValue = viagem.motoristaNome;
+                try
+                {
+                    int motoristaId = Convert.ToInt32(viagem.motoristaNome);
+                    cb_motoristaviagem.SelectedValue = motoristaId;
+                }
+                catch (FormatException) { }
+
+
+                cb_situacao_viagem.Text = viagem.situacao;
+
             }
         }
 

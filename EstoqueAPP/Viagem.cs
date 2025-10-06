@@ -97,9 +97,11 @@ namespace EstoqueAPP
                     viagemid = row.Cells["VIAGEMID"].Value.ToString(),
                     dataSaida = row.Cells["DATA_SAIDA"].Value.ToString(),
                     dataChegada = row.Cells["DATA_CHEGADA"].Value.ToString(),
-                    veiculoPlaca = row.Cells["VEICULOID"].Value.ToString(),
-                    rotaOrigem = row.Cells["ROTAID"].Value.ToString(),
-                    motoristaNome = row.Cells["MOTORISTAID"].Value.ToString()
+                    veiculoPlaca = row.Cells["VEICULOID"].Value.ToString(), 
+                    rotaOrigem = row.Cells["ROTAID"].Value.ToString(),      
+                    motoristaNome = row.Cells["MOTORISTAID"].Value.ToString(),
+                    situacao = row.Cells["SITUACAO"].Value.ToString() 
+
                 };
 
 
