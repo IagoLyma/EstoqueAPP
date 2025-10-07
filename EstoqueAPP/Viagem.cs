@@ -97,10 +97,10 @@ namespace EstoqueAPP
                     viagemid = row.Cells["VIAGEMID"].Value.ToString(),
                     dataSaida = row.Cells["DATA_SAIDA"].Value.ToString(),
                     dataChegada = row.Cells["DATA_CHEGADA"].Value.ToString(),
-                    veiculoPlaca = row.Cells["VEICULOID"].Value.ToString(), 
-                    rotaOrigem = row.Cells["ROTAID"].Value.ToString(),      
+                    veiculoPlaca = row.Cells["VEICULOID"].Value.ToString(),
+                    rotaOrigem = row.Cells["ROTAID"].Value.ToString(),
                     motoristaNome = row.Cells["MOTORISTAID"].Value.ToString(),
-                    situacao = row.Cells["SITUACAO"].Value.ToString() 
+                    situacao = row.Cells["SITUACAO"].Value.ToString()
 
                 };
 
@@ -212,6 +212,11 @@ namespace EstoqueAPP
         private void btn_reset_Click(object sender, EventArgs e)
         {
             ResetarProcura();
+        }
+
+        private void btn_voltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

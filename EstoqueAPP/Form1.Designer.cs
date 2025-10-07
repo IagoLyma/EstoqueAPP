@@ -220,6 +220,7 @@
             txt_cargaveiculo.Name = "txt_cargaveiculo";
             txt_cargaveiculo.Size = new Size(148, 29);
             txt_cargaveiculo.TabIndex = 9;
+            txt_cargaveiculo.KeyPress += txt_cargaveiculo_KeyPress;
             // 
             // txt_consumoveiculo
             // 
@@ -228,6 +229,7 @@
             txt_consumoveiculo.Name = "txt_consumoveiculo";
             txt_consumoveiculo.Size = new Size(110, 29);
             txt_consumoveiculo.TabIndex = 8;
+            txt_consumoveiculo.KeyPress += txt_consumoveiculo_KeyPress;
             // 
             // txt_placaveiculo
             // 
@@ -247,6 +249,7 @@
             // 
             // txt_veiculoid
             // 
+            txt_veiculoid.Cursor = Cursors.No;
             txt_veiculoid.Font = new Font("Segoe UI", 12F);
             txt_veiculoid.Location = new Point(302, 154);
             txt_veiculoid.Name = "txt_veiculoid";
@@ -388,6 +391,7 @@
             txt_fonemoto.Name = "txt_fonemoto";
             txt_fonemoto.Size = new Size(198, 29);
             txt_fonemoto.TabIndex = 18;
+            txt_fonemoto.KeyPress += txt_fonemoto_KeyPress;
             // 
             // txt_cnhmoto
             // 
@@ -396,6 +400,7 @@
             txt_cnhmoto.Name = "txt_cnhmoto";
             txt_cnhmoto.Size = new Size(198, 29);
             txt_cnhmoto.TabIndex = 17;
+            txt_cnhmoto.KeyPress += txt_cnhmoto_KeyPress;
             // 
             // txt_nomemotorista
             // 
@@ -404,9 +409,11 @@
             txt_nomemotorista.Name = "txt_nomemotorista";
             txt_nomemotorista.Size = new Size(280, 29);
             txt_nomemotorista.TabIndex = 16;
+            txt_nomemotorista.KeyPress += txt_nomemotorista_KeyPress;
             // 
             // txt_motoid
             // 
+            txt_motoid.Cursor = Cursors.No;
             txt_motoid.Font = new Font("Segoe UI", 12F);
             txt_motoid.Location = new Point(303, 146);
             txt_motoid.Name = "txt_motoid";
@@ -538,6 +545,7 @@
             txt_distanciarota.Name = "txt_distanciarota";
             txt_distanciarota.Size = new Size(165, 29);
             txt_distanciarota.TabIndex = 26;
+            txt_distanciarota.KeyPress += txt_distanciarota_KeyPress;
             // 
             // txt_destinorota
             // 
@@ -557,6 +565,7 @@
             // 
             // txt_rotaid
             // 
+            txt_rotaid.Cursor = Cursors.No;
             txt_rotaid.Font = new Font("Segoe UI", 12F);
             txt_rotaid.Location = new Point(274, 164);
             txt_rotaid.Name = "txt_rotaid";
@@ -683,6 +692,7 @@
             // 
             // cb_precomb
             // 
+            cb_precomb.Cursor = Cursors.Hand;
             cb_precomb.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_precomb.Font = new Font("Segoe UI", 12F);
             cb_precomb.FormattingEnabled = true;
@@ -694,6 +704,7 @@
             // 
             // date_precomb
             // 
+            date_precomb.Cursor = Cursors.Hand;
             date_precomb.Font = new Font("Segoe UI", 12F);
             date_precomb.Format = DateTimePickerFormat.Short;
             date_precomb.Location = new Point(306, 259);
@@ -709,9 +720,11 @@
             txt_precoprecomb.Name = "txt_precoprecomb";
             txt_precoprecomb.Size = new Size(165, 29);
             txt_precoprecomb.TabIndex = 34;
+            txt_precoprecomb.KeyPress += txt_precoprecomb_KeyPress;
             // 
             // txt_combid
             // 
+            txt_combid.Cursor = Cursors.No;
             txt_combid.Font = new Font("Segoe UI", 12F);
             txt_combid.Location = new Point(306, 171);
             txt_combid.Name = "txt_combid";
@@ -786,6 +799,8 @@
             // 
             // cb_situacao_viagem
             // 
+            cb_situacao_viagem.Cursor = Cursors.Hand;
+            cb_situacao_viagem.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_situacao_viagem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cb_situacao_viagem.FormattingEnabled = true;
             cb_situacao_viagem.Location = new Point(302, 409);
@@ -866,6 +881,7 @@
             // 
             // date_saidaviagem
             // 
+            date_saidaviagem.Cursor = Cursors.Hand;
             date_saidaviagem.Font = new Font("Segoe UI", 12F);
             date_saidaviagem.Format = DateTimePickerFormat.Short;
             date_saidaviagem.Location = new Point(302, 190);
@@ -875,6 +891,8 @@
             // 
             // cb_motoristaviagem
             // 
+            cb_motoristaviagem.Cursor = Cursors.Hand;
+            cb_motoristaviagem.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_motoristaviagem.Font = new Font("Segoe UI", 12F);
             cb_motoristaviagem.FormattingEnabled = true;
             cb_motoristaviagem.Location = new Point(302, 360);
@@ -885,6 +903,8 @@
             // 
             // cb_rotaviagem
             // 
+            cb_rotaviagem.Cursor = Cursors.Hand;
+            cb_rotaviagem.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_rotaviagem.Font = new Font("Segoe UI", 12F);
             cb_rotaviagem.FormattingEnabled = true;
             cb_rotaviagem.Location = new Point(302, 316);
@@ -895,6 +915,8 @@
             // 
             // cb_veiculoviagem
             // 
+            cb_veiculoviagem.Cursor = Cursors.Hand;
+            cb_veiculoviagem.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_veiculoviagem.Font = new Font("Segoe UI", 12F);
             cb_veiculoviagem.FormattingEnabled = true;
             cb_veiculoviagem.Location = new Point(302, 274);
@@ -925,6 +947,7 @@
             // 
             // date_viagemchegada
             // 
+            date_viagemchegada.Cursor = Cursors.Hand;
             date_viagemchegada.Font = new Font("Segoe UI", 12F);
             date_viagemchegada.Format = DateTimePickerFormat.Short;
             date_viagemchegada.Location = new Point(302, 234);
@@ -934,6 +957,7 @@
             // 
             // txt_viagemid
             // 
+            txt_viagemid.Cursor = Cursors.No;
             txt_viagemid.Font = new Font("Segoe UI", 12F);
             txt_viagemid.Location = new Point(302, 146);
             txt_viagemid.Name = "txt_viagemid";

@@ -85,9 +85,16 @@ namespace EstoqueAPP
 
         private void btn_salvar_veiculo_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrWhiteSpace(txt_veiculoid.Text))
+            {
+                MessageBox.Show("Não é possível salvar um novo Veículo. O campo ID deve estar vazio. Use o botão EDITAR para alterar um registro existente.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(txt_modeloveiculo.Text))
             {
                 MessageBox.Show("O campo Modelo do Veiculo é obrigatório para inserir!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+         
                 txt_modeloveiculo.Focus();
                 return;
             }
@@ -264,6 +271,12 @@ namespace EstoqueAPP
 
         private void btn_salvar_motorista_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrWhiteSpace(txt_motoid.Text))
+            {
+                MessageBox.Show("Não é possível salvar um novo Motorista. O campo ID deve estar vazio. Use o botão EDITAR para alterar um registro existente.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(txt_nomemotorista.Text))
             {
                 MessageBox.Show("O campo Nome motorista precisa ser preenchido!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -324,6 +337,12 @@ namespace EstoqueAPP
 
         private void btn_salvar_rota_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrWhiteSpace(txt_rotaid.Text))
+            {
+                MessageBox.Show("Não é possível salvar uma nova Rota. O campo ID deve estar vazio. Use o botão EDITAR para alterar um registro existente.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(txt_origemrota.Text))
             {
                 MessageBox.Show("O campo Origem precisa ser preenchido!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -369,6 +388,7 @@ namespace EstoqueAPP
                 txt_consumoveiculo.Text = veiculo.consumo;
                 txt_cargaveiculo.Text = veiculo.carga;
             }
+
         }
 
         private void btn_consultar_rota_Click(object sender, EventArgs e)
@@ -456,6 +476,12 @@ namespace EstoqueAPP
 
         private void btn_salvar_combustivel_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrWhiteSpace(txt_combid.Text))
+            {
+                MessageBox.Show("Não é possível salvar um novo Combustível. O campo ID deve estar vazio. Use o botão EDITAR para alterar um registro existente.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(cb_precomb.Text))
             {
                 MessageBox.Show("O campo Combustivel não pode ser vazio!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -1013,7 +1039,7 @@ namespace EstoqueAPP
                         cmd.Parameters.AddWithValue("@motoristaId", cb_motoristaviagem.SelectedValue);
                         cmd.Parameters.AddWithValue("@rotaId", cb_rotaviagem.SelectedValue);
 
-                        
+
                         cmd.Parameters.AddWithValue("@saida", dataSaida);
                         cmd.Parameters.AddWithValue("@chegada", dataChegada);
                         cmd.Parameters.AddWithValue("@situacao", cb_situacao_viagem.Text);
@@ -1033,6 +1059,12 @@ namespace EstoqueAPP
 
         private void btn_salvar_viagem_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrWhiteSpace(txt_veiculoid.Text))
+            {
+                MessageBox.Show("Não é possível salvar uma nova Viagem. O campo ID deve estar vazio. Use o botão EDITAR para alterar um registro existente.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (cb_veiculoviagem.SelectedIndex == -1 || cb_rotaviagem.SelectedIndex == -1 || cb_motoristaviagem.SelectedIndex == -1)
             {
                 MessageBox.Show("Todos os campos de seleção (Veículo, Rota, Motorista) são obrigatórios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -1223,6 +1255,78 @@ namespace EstoqueAPP
             if (cb_situacao_viagem.Items.Count > 0)
             {
                 cb_situacao_viagem.SelectedIndex = 0;
+            }
+        }
+
+        private void txt_consumoveiculo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != ',')
+            {
+                e.Handled = true;
+            }
+            else if (e.KeyChar == ',' && ((TextBox)sender).Text.IndexOf(',') > -1)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_cargaveiculo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != ',')
+            {
+                e.Handled = true;
+            }
+            else if (e.KeyChar == ',' && ((TextBox)sender).Text.IndexOf(',') > -1)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_nomemotorista_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != (char)32)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_cnhmoto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_fonemoto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != ',')
+            {
+                e.Handled = true;
+            }
+            else if (e.KeyChar == '-' && ((TextBox)sender).Text.IndexOf('-') > -1)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_distanciarota_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_precoprecomb_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != ',')
+            {
+                e.Handled = true;
+            }
+            else if (e.KeyChar == ',' && ((TextBox)sender).Text.IndexOf(',') > -1)
+            {
+                e.Handled = true;
             }
         }
     }

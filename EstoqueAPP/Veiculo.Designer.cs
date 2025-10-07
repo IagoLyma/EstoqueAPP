@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button2 = new Button();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            btn_voltar = new Button();
             btn_procurar = new Button();
             txt_pesquisa = new TextBox();
             label1 = new Label();
@@ -37,23 +40,31 @@
             ((System.ComponentModel.ISupportInitialize)grid_veiculos).BeginInit();
             SuspendLayout();
             // 
-            // button2
+            // btn_voltar
             // 
-            button2.Location = new Point(713, 63);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 9;
-            button2.Text = "Voltar";
-            button2.UseVisualStyleBackColor = true;
+            btn_voltar.BackColor = Color.LightCoral;
+            btn_voltar.Cursor = Cursors.Hand;
+            btn_voltar.FlatStyle = FlatStyle.Flat;
+            btn_voltar.Location = new Point(698, 61);
+            btn_voltar.Name = "btn_voltar";
+            btn_voltar.Size = new Size(90, 30);
+            btn_voltar.TabIndex = 9;
+            btn_voltar.Text = "Voltar";
+            btn_voltar.UseVisualStyleBackColor = false;
+            btn_voltar.Click += btn_voltar_Click;
             // 
             // btn_procurar
             // 
-            btn_procurar.Location = new Point(309, 62);
+            btn_procurar.BackColor = Color.ForestGreen;
+            btn_procurar.Cursor = Cursors.Hand;
+            btn_procurar.FlatStyle = FlatStyle.Flat;
+            btn_procurar.ForeColor = Color.White;
+            btn_procurar.Location = new Point(295, 59);
             btn_procurar.Name = "btn_procurar";
-            btn_procurar.Size = new Size(75, 23);
+            btn_procurar.Size = new Size(90, 30);
             btn_procurar.TabIndex = 8;
             btn_procurar.Text = "Procurar";
-            btn_procurar.UseVisualStyleBackColor = true;
+            btn_procurar.UseVisualStyleBackColor = false;
             btn_procurar.Click += btn_procurar_Click;
             // 
             // txt_pesquisa
@@ -79,23 +90,48 @@
             grid_veiculos.AllowUserToAddRows = false;
             grid_veiculos.AllowUserToDeleteRows = false;
             grid_veiculos.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(224, 224, 224);
+            grid_veiculos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            grid_veiculos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            grid_veiculos.BackgroundColor = SystemColors.Control;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.Control;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            grid_veiculos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             grid_veiculos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            grid_veiculos.DefaultCellStyle = dataGridViewCellStyle3;
             grid_veiculos.Location = new Point(12, 105);
             grid_veiculos.MultiSelect = false;
             grid_veiculos.Name = "grid_veiculos";
             grid_veiculos.ReadOnly = true;
+            grid_veiculos.RowHeadersVisible = false;
+            grid_veiculos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grid_veiculos.Size = new Size(776, 319);
             grid_veiculos.TabIndex = 5;
             grid_veiculos.CellDoubleClick += grid_veiculos_CellDoubleClick;
             // 
             // btn_resetveiculo
             // 
-            btn_resetveiculo.Location = new Point(401, 63);
+            btn_resetveiculo.BackColor = Color.LightGray;
+            btn_resetveiculo.Cursor = Cursors.Hand;
+            btn_resetveiculo.FlatStyle = FlatStyle.Flat;
+            btn_resetveiculo.Location = new Point(407, 59);
             btn_resetveiculo.Name = "btn_resetveiculo";
-            btn_resetveiculo.Size = new Size(75, 23);
+            btn_resetveiculo.Size = new Size(90, 30);
             btn_resetveiculo.TabIndex = 10;
             btn_resetveiculo.Text = "Resetar";
-            btn_resetveiculo.UseVisualStyleBackColor = true;
+            btn_resetveiculo.UseVisualStyleBackColor = false;
             btn_resetveiculo.Click += btn_resetveiculo_Click;
             // 
             // form_veiculo
@@ -104,7 +140,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(btn_resetveiculo);
-            Controls.Add(button2);
+            Controls.Add(btn_voltar);
             Controls.Add(btn_procurar);
             Controls.Add(txt_pesquisa);
             Controls.Add(label1);
@@ -119,7 +155,7 @@
 
         #endregion
 
-        private Button button2;
+        private Button btn_voltar;
         private Button btn_procurar;
         private TextBox txt_pesquisa;
         private Label label1;

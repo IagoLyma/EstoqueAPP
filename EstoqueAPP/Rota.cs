@@ -145,5 +145,11 @@ namespace EstoqueAPP
                 MessageBox.Show($"Erro ao pesquisar no banco: ${ex.Message}");
             }
         }
+
+        private void btn_voltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
     }
 }

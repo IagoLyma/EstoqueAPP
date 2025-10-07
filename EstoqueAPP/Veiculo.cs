@@ -142,7 +142,7 @@ namespace EstoqueAPP
                         {
                             DataTable dt = new DataTable();
                             adpter.Fill(dt);
-                            grid_veiculos.DataSource= dt;
+                            grid_veiculos.DataSource = dt;
                         }
                     }
                 }
@@ -151,6 +151,11 @@ namespace EstoqueAPP
             {
                 MessageBox.Show($"Erro ao pesquisar no banco: ${ex.Message}");
             }
+        }
+
+        private void btn_voltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

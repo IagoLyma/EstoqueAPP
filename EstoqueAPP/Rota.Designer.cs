@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button2 = new Button();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            btn_voltar = new Button();
             btn_procurar = new Button();
             txt_pesquisa = new TextBox();
             label1 = new Label();
@@ -37,23 +40,31 @@
             ((System.ComponentModel.ISupportInitialize)grid_rota).BeginInit();
             SuspendLayout();
             // 
-            // button2
+            // btn_voltar
             // 
-            button2.Location = new Point(713, 63);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 9;
-            button2.Text = "Voltar";
-            button2.UseVisualStyleBackColor = true;
+            btn_voltar.BackColor = Color.LightCoral;
+            btn_voltar.Cursor = Cursors.Hand;
+            btn_voltar.FlatStyle = FlatStyle.Flat;
+            btn_voltar.Location = new Point(698, 58);
+            btn_voltar.Name = "btn_voltar";
+            btn_voltar.Size = new Size(90, 30);
+            btn_voltar.TabIndex = 9;
+            btn_voltar.Text = "Voltar";
+            btn_voltar.UseVisualStyleBackColor = false;
+            btn_voltar.Click += btn_voltar_Click;
             // 
             // btn_procurar
             // 
-            btn_procurar.Location = new Point(309, 62);
+            btn_procurar.BackColor = Color.ForestGreen;
+            btn_procurar.Cursor = Cursors.Hand;
+            btn_procurar.FlatStyle = FlatStyle.Flat;
+            btn_procurar.ForeColor = Color.White;
+            btn_procurar.Location = new Point(295, 58);
             btn_procurar.Name = "btn_procurar";
-            btn_procurar.Size = new Size(75, 23);
+            btn_procurar.Size = new Size(90, 30);
             btn_procurar.TabIndex = 8;
             btn_procurar.Text = "Procurar";
-            btn_procurar.UseVisualStyleBackColor = true;
+            btn_procurar.UseVisualStyleBackColor = false;
             btn_procurar.Click += btn_procurar_Click;
             // 
             // txt_pesquisa
@@ -76,21 +87,50 @@
             // 
             // grid_rota
             // 
+            grid_rota.AllowUserToAddRows = false;
+            grid_rota.AllowUserToDeleteRows = false;
+            grid_rota.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(224, 224, 224);
+            grid_rota.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            grid_rota.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            grid_rota.BackgroundColor = SystemColors.Control;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.Control;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            grid_rota.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             grid_rota.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            grid_rota.DefaultCellStyle = dataGridViewCellStyle3;
             grid_rota.Location = new Point(12, 105);
             grid_rota.Name = "grid_rota";
+            grid_rota.ReadOnly = true;
+            grid_rota.RowHeadersVisible = false;
+            grid_rota.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grid_rota.Size = new Size(776, 319);
             grid_rota.TabIndex = 5;
             grid_rota.CellDoubleClick += grid_motorista_CellDoubleClick;
             // 
             // btn_resetarrota
             // 
-            btn_resetarrota.Location = new Point(399, 63);
+            btn_resetarrota.BackColor = Color.LightGray;
+            btn_resetarrota.Cursor = Cursors.Hand;
+            btn_resetarrota.FlatStyle = FlatStyle.Flat;
+            btn_resetarrota.Location = new Point(404, 58);
             btn_resetarrota.Name = "btn_resetarrota";
-            btn_resetarrota.Size = new Size(75, 23);
+            btn_resetarrota.Size = new Size(90, 30);
             btn_resetarrota.TabIndex = 10;
             btn_resetarrota.Text = "Resetar";
-            btn_resetarrota.UseVisualStyleBackColor = true;
+            btn_resetarrota.UseVisualStyleBackColor = false;
             btn_resetarrota.Click += btn_resetarrota_Click;
             // 
             // Rota
@@ -99,7 +139,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(btn_resetarrota);
-            Controls.Add(button2);
+            Controls.Add(btn_voltar);
             Controls.Add(btn_procurar);
             Controls.Add(txt_pesquisa);
             Controls.Add(label1);
@@ -114,7 +154,7 @@
 
         #endregion
 
-        private Button button2;
+        private Button btn_voltar;
         private Button btn_procurar;
         private TextBox txt_pesquisa;
         private Label label1;
